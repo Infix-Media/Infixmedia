@@ -1,0 +1,98 @@
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  FiSun,
+  FiMoon,
+  FiHome,
+  FiGrid,
+  FiInfo,
+  FiBriefcase,
+  FiMail,
+} from "react-icons/fi";
+
+const links = [
+  { to: "/", label: "Home", icon: <FiHome /> },
+  { to: "/services", label: "Services", icon: <FiGrid /> },
+  { to: "/about", label: "About", icon: <FiInfo /> },
+  { to: "/case-studies", label: "Cases", icon: <FiBriefcase /> },
+  { to: "/contact", label: "Contact", icon: <FiMail /> },
+];
+
+const THEME_KEY = "infix-theme";
+
+function getInitialTheme() {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  const savedTheme = window.localStorage.getItem(THEME_KEY);
+  if (savedTheme === "light" || savedTheme === "dark") {
+    return savedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function Navbar() {
+  const [theme, setTheme] = useState(getInitialTheme);
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+  }, [theme]);
+
+  const isDark = theme === "dark";
+
+  return (
+    <header className="navbar">
+      <div className="container nav-inner">
+        <NavLink to="/" className="brand">
+          <span>INFIX</span> MEDIA
+        </NavLink>
+
+        <nav>
+          <ul className="nav-links">
+            {links.map((link) => (
+              <li key={link.to}>
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    isActive ? "active nav-item" : "nav-item"
+                  }
+                >
+                  {link.icon}
+                  <span>{link.label}</span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <button
+          type="button"
+          className="theme-toggle icon-toggle"
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          aria-label="Toggle theme"
+        >
+          {isDark ? <FiSun size={20} /> : <FiMoon size={20} />}
+        </button>
+      </div>
+    </header>
+  );
+}
+
+export default Navbar;
