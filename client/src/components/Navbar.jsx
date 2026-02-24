@@ -84,6 +84,7 @@ function Navbar() {
         </nav>
         <button
           type="button"
+          id="navtheme"
           className="theme-toggle icon-toggle"
           onClick={() => setTheme(isDark ? "light" : "dark")}
           aria-label="Toggle theme"

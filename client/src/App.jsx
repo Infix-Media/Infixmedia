@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import NavMob from "./components/NavMob.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ServicesPage from "./pages/ServicesPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
@@ -10,6 +11,7 @@ import ContactPage from "./pages/ContactPage.jsx";
 function App() {
   return (
     <div className="app-shell">
+      <NavMob />
       <Navbar />
       <main>
         <Routes>
