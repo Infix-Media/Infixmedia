@@ -47,6 +47,50 @@ body {
   background: var(--bg);
   color: var(--text);
 }
+.success {
+  color: #2e7d32;
+}
+
+.error {
+  color: #c62828;
+}
+
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background: #25D366;
+  color: white;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+
+  background: var(--panel-soft);
+  color: var(--text);
+  font-weight: 500;
+
+  transition: all 0.25s ease;
+}
+
+.contact-link:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
 
 a {
   color: inherit;
@@ -144,19 +188,17 @@ h1 {
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  }
 }
 
-/* .theme-toggle {
-  padding: 0.45rem 0.85rem;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--text);
-  font: inherit;
-  cursor: pointer;
-} */
 .theme-toggle {
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -242,6 +284,7 @@ h1 {
 
 .stack > * + * {
   margin-top: 0.85rem;
+  margin-bottom: 0.85rem;
 }
 
 .muted-text {

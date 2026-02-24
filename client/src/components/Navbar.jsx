@@ -18,44 +18,7 @@ const links = [
   { to: "/contact", label: "Contact", icon: <FiMail /> },
 ];
 
-const THEME_KEY = "infix-theme";
-
-function getInitialTheme() {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
-  const savedTheme = window.localStorage.getItem(THEME_KEY);
-  if (savedTheme === "light" || savedTheme === "dark") {
-    return savedTheme;
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
-function Navbar() {
-  const [theme, setTheme] = useState(getInitialTheme);
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.querySelector(".navbar");
-      if (window.scrollY > 20) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    window.localStorage.setItem(THEME_KEY, theme);
-  }, [theme]);
-
+function Navbar({ theme, setTheme }) {
   const isDark = theme === "dark";
 
   return (
