@@ -9,6 +9,7 @@ function ContactPage() {
     brand: "",
     email: "",
     phone: "",
+    serviceInterest: "",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -26,7 +27,14 @@ function ContactPage() {
     try {
       await submitContact(form);
       setStatus("Request submitted. The Infix team will reach out.");
-      setForm({ name: "", brand: "", email: "", phone: "", message: "" });
+      setForm({
+        name: "",
+        brand: "",
+        email: "",
+        phone: "",
+        serviceInterest: "",
+        message: "",
+      });
     } catch {
       setStatus(
         "Submission failed. Email us directly at hello@infixmedia.com.",
@@ -53,9 +61,9 @@ function ContactPage() {
               WhatsApp: Start Chat
             </a>
             <br />
-            <a href="mailto:abhay.d.prajapati@slrtce.in" className="contact-link">
+            <a href="mailto:infixmedia.co@gmail.com" className="contact-link">
               <FiMail size={18} />
-              <span>Email: hello@infixmedia.com</span>
+              <span>Email: infixmedia.co@gmail.com</span>
             </a>
           </div>
         </div>
@@ -98,6 +106,15 @@ function ContactPage() {
             type="tel"
             value={form.phone}
             onChange={onChange}
+          />
+
+          <label htmlFor="serviceInterest">Service</label>
+          <input
+            id="serviceInterest"
+            name="serviceInterest"
+            value={form.serviceInterest}
+            onChange={onChange}
+            required
           />
 
           <label htmlFor="message">What needs fixing?</label>
