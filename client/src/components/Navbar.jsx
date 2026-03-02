@@ -25,7 +25,10 @@ function Navbar({ theme, setTheme }) {
     <header className="navbar">
       <div className="container nav-inner">
         <NavLink to="/" className="brand">
-          <span>INFIX</span> MEDIA
+          <span>
+            INF<span className="logo-i">i</span>X
+          </span>{" "}
+          MEDIA
         </NavLink>
 
         <nav>

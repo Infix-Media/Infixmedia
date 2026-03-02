@@ -5,14 +5,18 @@ function ServicesPage() {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetchServices().then(setServices).catch(() => setServices([]));
+    fetchServices()
+      .then(setServices)
+      .catch(() => setServices([]));
   }, []);
 
   return (
     <section className="section">
       <div className="container">
-        <h1>Services</h1>
-        <p className="lead">Execution built for outcomes. No vanity retainers. No bloated process.</p>
+        <h2 class="section-title">Our Services</h2>
+        <p className="lead">
+          Execution built for outcomes. No vanity retainers. No bloated process.
+        </p>
         <div className="stack">
           {services.map((service) => (
             <article className="card service-card" key={service._id}>
