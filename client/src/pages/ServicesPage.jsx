@@ -13,7 +13,7 @@ function ServicesPage() {
   return (
     <section className="section">
       <div className="container">
-        <h2 class="section-title">Our Services</h2>
+        <h1>Our Services</h1>
         <p className="lead">
           Execution built for outcomes. No vanity retainers. No bloated process.
         </p>
