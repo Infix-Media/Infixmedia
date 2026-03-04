@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchCaseStudies, fetchTestimonials } from "../api/contentApi";
-import heroVideo from "../../media/hero_sec.MP4";
+import heroVideo from "../../media/hero_sec.mp4";
 import logoDark from "../../media/bg1.PNG";
 import logoLight from "../../media/bg2.PNG";
 
