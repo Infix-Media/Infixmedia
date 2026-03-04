@@ -118,6 +118,7 @@ a {
 h1,
 h2,
 h3 {
+  padding-top: 3rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -147,6 +148,9 @@ h1 {
     border-bottom: 1px solid var(--line);
     background: var(--nav-bg);
     backdrop-filter: blur(5px);
+  }
+  .hero-video-overlay{
+    display: none !important;
   }
 }
 
@@ -249,6 +253,7 @@ h1 {
   background: var(--panel);
   padding: 1.25rem;
   border-radius: var(--radius-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .strong {
@@ -274,6 +279,7 @@ h1 {
   border: 1px solid var(--line);
   padding: 1rem;
   background: var(--panel);
+  border-radius: var(--radius-md);
 }
 
 .process-item span {
@@ -285,6 +291,7 @@ h1 {
   background: var(--panel);
   text-align: center;
   padding: 2rem;
+  border-radius: var(--radius-lg);
 }
 
 .stack > * + * {
@@ -388,12 +395,15 @@ textarea {
 }
 
 .hero-video-wrap {
+  position: relative;
+  grid-area: video;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #000;
   min-height: 300px;
-  grid-area: video;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-video {
@@ -441,11 +451,6 @@ textarea {
   /* background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)); */
 }
 
-.card {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
 
 .thumb {
   aspect-ratio: 16/9;
@@ -517,27 +522,13 @@ textarea {
   border-radius: var(--radius-sm);
 }
 
-.process-item {
-  border-radius: var(--radius-md);
-}
-
-.cta-box {
-  border-radius: var(--radius-lg);
-}
-
 .navbar {
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-.card,
 .process-item,
 .cta-box {
   transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
 /* mobile view */
@@ -663,14 +654,6 @@ textarea {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
-.hero-video-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: #000;
-}
 
 .hero-video {
   width: 100%;
@@ -699,6 +682,14 @@ textarea {
 .hero-copy {
   text-align: left;
   grid-area: copy;
+}
+
+.hero-theme-logo {
+  width: clamp(220px, 34vw, 420px);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 0.6rem;
 }
 
 .hero-cta {
@@ -730,6 +721,10 @@ textarea {
 
   .hero-tagline strong {
     display: block;
+  }
+
+  .hero-theme-logo {
+    display: none;
   }
 
   .hero-cta {

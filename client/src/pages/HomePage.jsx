@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchCaseStudies, fetchTestimonials } from "../api/contentApi";
-import heroVideo from "../../media/hero_sec.MOV";
-import logoLight from "../../media/bg1.PNG";
+import heroVideo from "../../media/hero_sec.MP4";
+import logoDark from "../../media/bg1.PNG";
+import logoLight from "../../media/bg2.PNG";
 
 const capabilities = [
   {
@@ -50,9 +51,10 @@ const reasons = [
   },
 ];
 
-function HomePage() {
+function HomePage({ theme }) {
   const [testimonials, setTestimonials] = useState([]);
   const [caseStudies, setCaseStudies] = useState([]);
+  const themeLogo = theme === "dark" ? logoDark : logoLight;
 
   useEffect(() => {
     const load = async () => {
@@ -80,6 +82,7 @@ function HomePage() {
             <p className="eyebrow hero-tagline">
               Execution partner for <strong>serious brands</strong>
             </p>
+            <img className="hero-theme-logo" src={themeLogo} alt="Infix Media" />
 
             <div className="hero-cta">
               <Link to="/contact" className="btn-primary">
@@ -98,7 +101,7 @@ function HomePage() {
               playsInline
             />
             <div className="hero-video-overlay">
-              <img className="hero-logo" src={logoLight} alt="Infix Media" />
+              <img className="hero-logo" src={logoDark} alt="Infix Media" />
             </div>
           </div>
         </div>
